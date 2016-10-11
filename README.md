@@ -1,24 +1,12 @@
-# README
+# 動作確認方法
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## index
+curl -X GET http://127.0.0.1:3000/tasks/
+## show
+curl -X GET http://127.0.0.1:3000/tasks/#{id}
+## Create
+curl -F "task[content]=#{contentの値}" -F "task[status]=#{statusの値}" http://127.0.0.1:3000/tasks.json
+## UPDATE
+curl -X PUT -F "task[content]=#{id}" -F "task[status]=#{statusの値}" http://127.0.0.1:3000/tasks/#{id}.json
+## DELETE
+curl -X DELETE http://127.0.0.1:3000/tasks/#{id}.json
