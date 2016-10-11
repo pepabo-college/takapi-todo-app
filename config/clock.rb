@@ -6,8 +6,8 @@ require File.expand_path('../environment', __FILE__)
 
 module Clockwork
 
-  def one_seconds
-    Task.all.each do |task|
+  def reminder_mail
+    Task.where("duedate <= ?", Date.today).each do |task|
       p task.content
     end
   end
@@ -16,6 +16,6 @@ module Clockwork
     self.send(job.to_sym)
   end
 
-  every(1.seconds, 'one_seconds')
+  every(1.day, 'reminder_mail', at: '09:00')
 
 end
