@@ -8,8 +8,12 @@ module Clockwork
 
   def reminder_mail
     Task.where("duedate <= ?", Date.today).each do |task|
-      p task.content
+      _show task.content
     end
+  end
+
+  def _show(str)
+    p str
   end
 
   handler do |job|
