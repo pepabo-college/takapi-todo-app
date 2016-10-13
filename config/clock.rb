@@ -9,6 +9,7 @@ module Clockwork
   def reminder_mail
     Task.where("duedate <= ?", Date.today).each do |task|
       _show task.content
+      RemindMailer.sendmail(task).deliver
     end
   end
 
@@ -20,6 +21,7 @@ module Clockwork
     self.send(job.to_sym)
   end
 
-  every(1.day, 'reminder_mail', at: '09:00')
+#  every(1.day, 'reminder_mail', at: '09:00')
+  every(1.minute, 'reminder_mail')
 
 end
