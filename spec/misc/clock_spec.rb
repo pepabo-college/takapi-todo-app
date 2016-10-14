@@ -22,7 +22,7 @@ describe "clock.rb" do
 
   it "" do
     expect(@for_test).to receive(:_show).with("コンテンツ").once
-    allow(ActionMailer::Base).to receive(:deliveries).and_return("OK")
+    allow(Clockwork).to receive(:send_mail).and_return("OK")
     @for_test.reminder_mail
   end
 
