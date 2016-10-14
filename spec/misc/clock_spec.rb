@@ -20,8 +20,9 @@ describe "clock.rb" do
     Task.delete_all
   end
 
-  it " " do
+  it "" do
     expect(@for_test).to receive(:_show).with("コンテンツ").once
+    allow(RemindMailer).to receive(:sendmail).and_return(true)
     @for_test.reminder_mail
   end
 
