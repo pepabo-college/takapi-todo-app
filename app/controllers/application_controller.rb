@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   USERS = { ENV['USER'] => ENV['PASS'] }
 
   before_action :digest_auth
