@@ -2,7 +2,7 @@
   "name": "takapi-todo-app",
   "version": "1.0.0",
   "description": "## index curl -X GET http://127.0.0.1:3000/tasks/ ## show curl -X GET http://127.0.0.1:3000/tasks/#{id} ## Create curl -F \"task[content]=#{contentの値}\" -F \"task[status]=#{statusの値}\" http://127.0.0.1:3000/tasks.json ## UPDATE curl -X PUT -F \"task[content]=#{id}\" -F \"task[status]=#{statusの値}\" http://127.0.0.1:3000/tasks/#{id}.json ## DELETE curl -X DELETE http://127.0.0.1:3000/tasks/#{id}.json",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "test": "test"
   },
@@ -29,7 +29,8 @@
   "dependencies": {
     "babel-preset-react": "^6.16.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "superagent": "^2.3.0"
   },
   "babel": {
     "presets": [
