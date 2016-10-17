@@ -21,10 +21,20 @@ describe "clock.rb" do
     Task.delete_all
   end
 
-  it "" do
+  it "_showでメッセージを受け取ること" do
     expect(@for_test).to receive(:_show).with("コンテンツ").once
-    mailer = instance_double("RemindMailer", deliver: true)
+    mailer = double(RemindMailer, deliver: true)
+
     allow(RemindMailer).to receive(:sendmail).and_return(mailer)
+    @for_test.reminder_mail
+  end
+
+  it "通知メールが送られること" do
+    allow(@for_test).to receive(:_show).with("コンテンツ")
+
+    mailer = double(RemindMailer, deliver: true)
+    expect(RemindMailer).to receive(:sendmail).and_return(mailer)
+
     @for_test.reminder_mail
   end
 
