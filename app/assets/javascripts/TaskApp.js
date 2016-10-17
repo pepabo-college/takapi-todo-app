@@ -43,6 +43,20 @@ export default class TaskApp extends React.Component {
       });
   }
 
+  taskUpdate(task) {
+    request
+      .patch(this.props.url + '/' + task.task.id)
+      .accept('application/json')
+      .send(task)
+      .end((err, res) => {
+        if (err || !res.ok) {
+          console.error(this.props.url, status, err.toString());
+        } else {
+          this.setState({data: res.body});
+        }
+      });
+  }
+
   componentDidMount() {
     this.loadTaskFromServer();
     setInterval(this.loadTaskFromServer.bind(this),
@@ -62,7 +76,7 @@ export default class TaskApp extends React.Component {
               <th colSpan="3"></th>
             </tr>
           </thead>
-          <TaskList data={this.state.data} />
+          <TaskList data={this.state.data} onTaskUpdate={this.taskUpdate.bind(this)} />
         </table>
       </div>
     );
