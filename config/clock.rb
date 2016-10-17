@@ -11,7 +11,6 @@ module Clockwork
       _show task.content
       @task = task
       self.send_mail
-#      RemindMailer.sendmail(task).deliver
     end
   end
 
