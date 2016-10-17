@@ -9,10 +9,10 @@ export default class Task extends React.Component {
   render() {
     return (
       <tr key={this.props.id}>
-        <td>
+        <td className={this.props.status}>
           {this.props.content}
         </td>
-        <td>
+        <td className={this.props.status}>
           <select className="form-control" defaultValue={this.props.status} onChange={this.handleUpdate.bind(this)} >
             <option value="todo" key="todo">todo</option>
             <option value="doing" key="doing">doing</option>
