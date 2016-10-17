@@ -16,9 +16,11 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+npm-debug.log*
 
 # Ignore Byebug command history file.
 .byebug_history
 
 /app/assets/javascripts/bundle.js
-
+node_modules/
+vendor/
