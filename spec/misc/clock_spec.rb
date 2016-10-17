@@ -33,6 +33,7 @@ describe "clock.rb" do
     allow(@for_test).to receive(:_show).with("コンテンツ")
 
     mailer = double(RemindMailer, deliver: true)
+    expect(mailer).to receive(:deliver).once
     expect(RemindMailer).to receive(:sendmail).and_return(mailer)
 
     @for_test.reminder_mail
