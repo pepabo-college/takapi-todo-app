@@ -15,7 +15,7 @@ module Clockwork
   end
 
   def send_mail
-      RemindMailer.sendmail(@task).deliver
+    RemindMailer.sendmail(@task).deliver
   end
 
   def _show(str)
