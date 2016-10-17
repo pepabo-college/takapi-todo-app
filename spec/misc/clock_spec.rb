@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 require Rails.root.join('config/clock')
 
@@ -23,7 +24,7 @@ describe "clock.rb" do
   it "" do
     expect(@for_test).to receive(:_show).with("コンテンツ").once
     mailer = instance_double("RemindMailer", deliver: true)
-    allow(RemindMailer).to receive(:send_mail).and_return(mailer)
+    allow(RemindMailer).to receive(:sendmail).and_return(mailer)
     @for_test.reminder_mail
   end
 
