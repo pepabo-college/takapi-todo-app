@@ -6,6 +6,7 @@ export default class TaskForm extends React.Component {
     e.preventDefault();
     var content = ReactDOM.findDOMNode(this.refs.content).value.trim();
     if (!content) {
+      alert("タスクを入力してください！");
       return;
     }
     this.props.onTaskSubmit({content: content, status: 'todo'});
