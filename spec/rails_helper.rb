@@ -7,9 +7,6 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
-# for sqlite3 use in memory
-load Rails.root.join('db/schema.rb') if ENV['CI']
-
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -27,6 +24,11 @@ load Rails.root.join('db/schema.rb') if ENV['CI']
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
+if ENV['CI']
+  Rails.application.load_tasks
+  Rake::Task["db:create"].invoke
+  Rake::Task["db:migrate"].invoke
+end
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
