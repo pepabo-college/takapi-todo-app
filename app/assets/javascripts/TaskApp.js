@@ -61,7 +61,6 @@ export default class TaskApp extends React.Component {
     var newTasks = this.state.data.filter((task) => {
       return task.id !== id
     })
-    this.setState({data: newTasks});
     request
       .del(this.props.url + '/' + id)
       .accept('application/json')
