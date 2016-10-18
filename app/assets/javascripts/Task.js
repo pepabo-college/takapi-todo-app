@@ -14,7 +14,7 @@ export default class Task extends React.Component {
       return;
     }
     console.log(memo);
-    this.props.onTaskUpdate({task: {id: this.props.id, memo: memo}});
+    this.props.onTaskUpdate({task: {id: this.props.id, status: this.props.status, memo: memo}});
     return;
   }
 
