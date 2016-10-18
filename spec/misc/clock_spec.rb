@@ -13,7 +13,8 @@ describe "clock.rb" do
     Task.new(
       content: "コンテンツ",
        status: "todo",
-       duedate: Date.yesterday.to_s
+       duedate: Date.yesterday.to_s,
+       memo: ""
     ).save
 
     @mailer = double(RemindMailer, deliver: true)
