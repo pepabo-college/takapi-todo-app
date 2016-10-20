@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161011070641) do
 
-  create_table "tasks", force: :cascade do |t|
-    t.text    "content"
-    t.integer "status",  limit: 4
+  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.text    "content", limit: 65535
+    t.integer "status"
     t.date    "duedate"
   end
 
