@@ -206,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  capistrano
   capistrano-rails
   capistrano-rbenv
   capistrano3-puma
