@@ -66,13 +66,13 @@ export default class TaskApp extends React.Component {
   render() {
     return (
       <div className="TaskApp">
-        <TaskForm
-          onTaskSubmit={this.handleTaskSubmit.bind(this)} />
+        <TaskForm onTaskSubmit={this.handleTaskSubmit.bind(this)} />
         <table className="table table-striped">
           <thead>
             <tr>
               <th>Content</th>
               <th>Status</th>
+              <th>Memo</th>
               <th colSpan="3"></th>
             </tr>
           </thead>
