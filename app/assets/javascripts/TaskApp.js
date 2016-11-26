@@ -57,6 +57,22 @@ export default class TaskApp extends React.Component {
       });
   }
 
+  taskDestroy(id) {
+    var newTasks = this.state.data.filter((task) => {
+      return task.id !== id
+    })
+    request
+      .del(this.props.url + '/' + id)
+      .accept('application/json')
+      .end((err, res) => {
+        if (err || !res.ok) {
+          console.error(this.props.url, status, err.toString());
+        } else {
+          this.setState({data: newTasks});
+        }
+      });
+  }
+
   componentDidMount() {
     this.loadTaskFromServer();
     setInterval(this.loadTaskFromServer.bind(this),
@@ -76,7 +92,7 @@ export default class TaskApp extends React.Component {
               <th colSpan="3"></th>
             </tr>
           </thead>
-          <TaskList data={this.state.data} onTaskUpdate={this.taskUpdate.bind(this)} />
+          <TaskList data={this.state.data} onTaskUpdate={this.taskUpdate.bind(this)} onTaskDestroy={this.taskDestroy.bind(this)} />
         </table>
       </div>
     );
