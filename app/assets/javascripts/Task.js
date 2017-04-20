@@ -6,6 +6,11 @@ export default class Task extends React.Component {
     this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}});
   }
 
+  handleDestroy(e) {
+    e.preventDefault();
+    this.props.onTaskDestroy(this.props.id);
+  }
+
   render() {
     return (
       <tr key={this.props.id}>
@@ -18,6 +23,9 @@ export default class Task extends React.Component {
             <option value="doing" key="doing">doing</option>
             <option value="done" key="done">done</option>
           </select>
+        </td>
+        <td>
+          <button className="btn btn-danger" onClick={this.handleDestroy.bind(this)}>destroy</button>
         </td>
       </tr>
     );
